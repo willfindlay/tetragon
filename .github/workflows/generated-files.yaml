@@ -20,3 +20,6 @@ jobs:
           make generate
           make codegen
           test -z "$(git status --porcelain)" || (git status --porcelain; exit 1)
+          if [ $? != 0 ]; then
+            echo "Please run 'make generate && make codegen' and submit your changes."; exit 1
+          fi
